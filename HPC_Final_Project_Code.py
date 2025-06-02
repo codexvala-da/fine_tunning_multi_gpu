@@ -10,6 +10,7 @@ from peft import LoraConfig, PeftModel, prepare_model_for_kbit_training
 from torch.utils.data import DataLoader
 
 
+
 def main():
 
     # Initate accelerator from HuggingFace
@@ -29,10 +30,11 @@ def main():
     bnb_4bit_compute_dtype=torch.bfloat16
     )
     
+    token = ""
     # Prepare model and tokenizer
     model_id = 'meta-llama/Llama-3.2-1B-Instruct'
-    model = AutoModelForCausalLM.from_pretrained(model_id,quantization_config=bnb_config, token='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')
-    tokenizer = AutoTokenizer.from_pretrained(model_id, token = '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')
+    model = AutoModelForCausalLM.from_pretrained(model_id,quantization_config=bnb_config, token={{token}})
+    tokenizer = AutoTokenizer.from_pretrained(model_id, token = {{token}})
     tokenizer.pad_token = tokenizer.eos_token
 
 
